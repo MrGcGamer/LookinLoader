@@ -34,7 +34,7 @@
 
 ***[Download Lookin App](https://lookin.work)***
 
-***[Download Tweak](https://github.com/creantan/LookinLoader/releases/download/v1.0.6/com.chinapyg.lookinloader_1.0.6-1_iphoneos-arm.deb.zip)***
+***[Download Tweak](https://github.com/MTACS/LookinLoader/releases/download/v1.0.7/com.chinapyg.lookinloader_1.0.7-1+debug_iphoneos-arm.deb)***
 
 ## Easy build
 
