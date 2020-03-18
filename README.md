@@ -39,11 +39,8 @@
 ## Easy build
 
 ```bash
-git clone --recursive https://github.com/MTACS/LookinLoader.git
-cd layout/usr/lib/Lookin/LookinServer.framework/
-ldid -S LookinServer
-cd ../../../../../
-make package FINALPACKAGE=1
+./install.sh
+make package install
 ```
 
 ## Samples
