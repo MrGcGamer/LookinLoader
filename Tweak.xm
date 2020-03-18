@@ -20,6 +20,7 @@
 }
 
 %new
+
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
     if (alertView.tag == 0) {
         
@@ -39,33 +40,32 @@
 }
 
 %end
+
 %end
 
+%ctor {
+	
+	NSFileManager* fileManager = [NSFileManager defaultManager];
 
-%ctor{
+	NSString* libPath = @"/usr/lib/Lookin/LookinServer.framework/LookinServer";
 
-	@autoreleasepool {
+	if ([fileManager fileExistsAtPath:libPath]) {
 
-    	NSDictionary* lookinSettings = [NSDictionary dictionaryWithContentsOfFile:@"/var/mobile/Library/Preferences/com.chinapyg.lookin.plist"];
-		NSString* bundleID = [[NSBundle mainBundle] bundleIdentifier];
-		BOOL appEnabled = [[lookinSettings objectForKey:[NSString stringWithFormat:@"LookinEnabled-%@",bundleID]] boolValue];
-		if (appEnabled) {
-			NSFileManager* fileManager = [NSFileManager defaultManager];
+		void *lib = dlopen([libPath UTF8String], RTLD_NOW);
+		
+		if (lib) {
 
-			NSString* libPath = @"/usr/lib/Lookin/LookinServer.framework/LookinServer";
+			%init(UIDebug)
 
-			if([fileManager fileExistsAtPath:libPath]) {
-				void *lib = dlopen([libPath UTF8String], RTLD_NOW);
-				if (lib) {
-					%init(UIDebug)
-					NSLog(@"[+] LookinLoader loaded!");
-				}else {
-					char* err = dlerror();
-					NSLog(@"[+] LookinLoader load failed:%s",err);
-				}
-			}
+			NSLog(@"[+] LookinLoader loaded!");
+
+		} else {
+			
+			char* err = dlerror();
+			
+			NSLog(@"[+] LookinLoader load failed:%s",err);
 		}
-
+	
 	}
 
 }
