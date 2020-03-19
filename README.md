@@ -27,7 +27,7 @@
 ## Features
 
 + Configure options from Settings
-+ Shake to show UIDebug Menu
++ Double tap Status Bar to show debug menu
 
 
 ## Download
