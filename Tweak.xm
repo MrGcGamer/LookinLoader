@@ -128,7 +128,7 @@
 			
 			char* err = dlerror();
 			
-			NSLog(@"[+] LookinLoader load failed:%s",err);
+			NSLog(@"[+] LookinLoader load failed:%s", err);
 		}
 	
 	}
