@@ -4,8 +4,10 @@ ADDITIONAL_OBJCFLAGS = -fobjc-arc
 include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = LookinLoader
-$(TWEAK_NAME)_FILES = Tweak.xm
-$(TWEAK_NAME)_CFLAGS = -fobjc-arc -Wdeprecated-declarations -Wno-deprecated-declarations
+LookinLoader_FILES = Tweak.xm
+LookinLoader_FRAMEWORKS = CoreSymbolication
+LookinLoader_CFLAGS = -fobjc-arc -Wdeprecated-declarations -Wno-deprecated-declarations
+LookinLoader_LDFLAGS += -FFrameworks/
 
 include $(THEOS_MAKE_PATH)/tweak.mk
 
